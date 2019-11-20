@@ -139,7 +139,7 @@ folder before proceeding"""
                 end = temp.segment()
                 print(end)
             except:
-                print('big opsie')
+                print('Could not segment, and therefore not draw')
             if start[0] > 0:
                 try:
 #                    print('go')    
