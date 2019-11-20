@@ -50,7 +50,7 @@ class eyePicHandler:
         #make a mask that implements the colors of the pupil, often cale a threshold
         pupil = cv2.inRange(eye, black, dark)
         
-        #save and read the picture, nice to able to see this step in a pic
+        #save and read the picture, nice to be able to see this step in a pic
         cv2.imwrite('Pupil.jpg',pupil)
         pupil1 = cv2.imread('Pupil.jpg',1)
 
@@ -81,7 +81,7 @@ class eyePicHandler:
         contours,hierarchy = cv2.findContours(thresh, 1, 2)
 #       cnt = contours[0]
         if not contours:
-            print('aint nothing here1')
+            print('no contours found')
             return 0
         areas = [cv2.contourArea(c) for c in contours]
         max_index = np.argmax(areas)
@@ -100,7 +100,7 @@ class eyePicHandler:
         contours,hierarchy = cv2.findContours(thresh, 1, 2)
 #       cnt = contours[0]
         if not contours:
-#            print('No contours found, eye may be closed')
+            print('No contours found, eye may be closed')
 #            print (0)
             return 0
         
@@ -136,7 +136,7 @@ class eyePicHandler:
             cv2.ellipse(drawing, centreInt, axesLength, angle, startangle, end, red, 2)
             cv2.imwrite('fittedEllipse.jpg', drawing)
         except:
-            print('no centre, move on, aka small opsie')
+            print('no centre, move on')
      
         
 #        Draw a red dot in the centre of the ellipse,save, and return it all
@@ -157,7 +157,7 @@ class eyePicHandler:
             mask = np.array(labels, dtype=np.uint8)
             mask[labels == label] = 255
         if labels.any():
-            alakazam = 0
+            defi = 0
         else: 
             #error:error
             return (0,0)
@@ -197,11 +197,6 @@ class eyePicHandler:
             #cv2.imshow('component',mask)
             #cv2.waitKey(0)
             
-#        if labels.any():
-#            alakazam = 0
-#        else:
-##           ERROR
-#            return (0,0)
         
         #cv2.destroyAllWindows() 
         connectivity = 4
